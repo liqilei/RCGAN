@@ -1,0 +1,81 @@
+{
+    "name": "SRGAN",
+    "exec_debug": true,
+    "net_debug": false,
+    "mode": "sr",
+    "scale": 4,
+    "is_train": false,
+    "chop": true,
+    "rgb_range": 255,
+    "datasets": {
+        "train": {
+            "name": "DIV2K",
+            "mode": "LRHR_NEW",
+            "dataroot_HR": "/home/server606/SRdata/DIV2K/Subpatch/DIV2K_train_HR_sub",
+            "dataroot_LR": "/home/server606/SRdata/DIV2K/Subpatch/DIV2K_train_bicLRx4_sub",
+            "dataroot_HR_debug": "/home/server606/SRdata/DIV2K/Debug/DIV2K_train_HR_debug",
+            "dataroot_LR_debug": "/home/server606/SRdata/DIV2K/Debug/DIV2K_train_LR_debug",
+            "data_type": "npy_reset",
+            "n_workers": 8,
+            "batch_size": 16,
+            "LR_size": 32,
+            "use_flip": true,
+            "use_rot": true,
+            "noise": "."
+        },
+        "val": {
+            "name": "val_set5",
+            "mode": "LRHR_NEW",
+            "dataroot_HR": "/home/server606/SRdata/TestDataSR/Manga109",
+            "dataroot_LR": "/home/server606/SRdata/TestDataSR/Manga109_LRx4",
+            "data_type": "npy_reset"
+        }
+    },
+    "networks": {
+        "G": {
+            "which_model": "rcan_ours",
+            "mode": "NAC",
+            "num_features": 64,
+	        "num_groups": 10,
+            "num_blocks": 20,
+            "in_channels": 3,
+            "out_channels": 3
+        },
+        "D": {
+            "which_model": "vgg128",
+            "norm_type": "bn",
+            "act_type": "lrelu",
+            "mode": "CNA",
+            "num_features": 64,
+            "in_channels": 3
+        }
+    },
+    "train": {
+        "type": "ADAM",
+        "lr_G": 0.0001,
+        "weight_decay_G": 0,
+        "beta1_G": 0.9,
+        "lr_D": 1e-4,
+        "weight_decay_D": 0,
+        "beta1_D": 0.9,
+        "clip_grad": 0.4,
+        "lr_scheme": "MultiStepLR",
+        "lr_steps": [ 199,299,399 ],
+        "lr_gamma": 0.1,
+        "pixel_criterion": "l1",
+        "pixel_weight": 1.0,
+        "feature_criterion": "l1",
+        "feature_weight": 1,
+        "gan_type": "vanilla",
+        "gan_weight": 5e-3,
+        "D_update_ratio": 1,
+        "D_init_iters": 0,
+        "gp_weigth": 10,
+        "manual_seed": 0,
+        "num_epochs": 100,
+        "log_step": 1,
+        "val_step": 1,
+        "resume": false,
+        "resume_path": "/home/server606/Ruby/super_resolution/experiments/RCAN_x4_official"
+    }
+}
