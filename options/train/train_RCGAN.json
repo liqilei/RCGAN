@@ -7,7 +7,7 @@
       "dataroot_VI": "./Demo_dataset/train/sub_img/vi",
       "dataroot_IR": "./Demo_dataset/train/sub_img/ir",
       "dataroot_PF": "./Demo_dataset/train/sub_img/pf",
-      "data_type": "img",
+      "data_type": "npy_reset",
       "n_workers": 6,
       "batch_size": 32,
       "Image_Size": 132,
