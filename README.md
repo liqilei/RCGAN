@@ -2,7 +2,7 @@
 
 This repository is for RCGAN presented in the following paper
 
-[Q. Li](https://liqilei.github.io/scholar/), L. Lu, Z. Li, *et al*., "Coupled GAN with Relativistic Discriminators for Infrared and Visible Images Fusion", IEEE SENSORS JOURNAL, 2019. [[Link]](https://doi.org/10.1109/JSEN.2019.2921803) 
+[Q. Li](https://liqilei.github.io/), L. Lu, Z. Li, *et al*., "Coupled GAN with Relativistic Discriminators for Infrared and Visible Images Fusion", IEEE SENSORS JOURNAL, 2019. [[Link]](https://doi.org/10.1109/JSEN.2019.2921803) 
 
 This code is tested on Ubuntu 16.04 environment (Python3.6, PyTorch1.1.0, CUDA9.0, cuDNN5.1) with NVIDIA 1080Ti/2080Ti GPU.
 
