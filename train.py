@@ -4,6 +4,7 @@ import random
 
 import pandas as pd
 import scipy.misc as misc
+import imageio
 import torch
 import torchvision.utils as thutil
 from tqdm import tqdm
@@ -110,7 +111,7 @@ def main():
                 images = torch.stack(vis_list)
                 saveimg = thutil.make_grid(images, nrow=3, padding=5)
                 saveimg_nd = saveimg.byte().permute(1, 2, 0).numpy()
-                misc.imsave(os.path.join(solver.vis_dir, 'epoch_%d_%d.png' % (epoch, vis_index)), saveimg_nd)
+                imageio.imwrite(os.path.join(solver.vis_dir, 'epoch_%d_%d.png' % (epoch, vis_index)), saveimg_nd)
                 vis_index += 1
                 val_loss += loss_total * batch_size
 

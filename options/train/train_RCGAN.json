@@ -65,7 +65,7 @@
     "num_epochs": 10,
     "log_step": 1,
     "val_step": 1,
-    "resume": true,
-    "resume_path": "./experiments/COGAN_G_COGAN_D_p1f0_x"
+    "resume": false,
+    "resume_path": "./experiments/your_path"
   }
 }

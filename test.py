@@ -1,5 +1,6 @@
 import argparse, os
 import scipy.misc as misc
+import imageio
 import numpy as np
 from tqdm import tqdm
 import torchvision.utils as thutil
@@ -60,7 +61,7 @@ def main():
         saveimg = thutil.make_grid(images, nrow=3, padding=5)
         saveimg_nd = saveimg.byte().permute(1, 2, 0).numpy()
         img_name = os.path.splitext(os.path.basename(batch['VIS_path'][0]))[0]
-        misc.imsave(os.path.join(solver.cmp_dir, 'comp_%s.bmp' % (img_name)), saveimg_nd)
+        imageio.imwrite(os.path.join(solver.cmp_dir, 'comp_%s.bmp' % (img_name)), saveimg_nd)
         fused_img = visuals['img_fuse']
         fused_img = np.transpose(util.quantize(fused_img).numpy(), (1, 2, 0)).astype(np.uint8).squeeze()
         fused_list.append(fused_img)
@@ -71,7 +72,7 @@ def main():
         os.makedirs(save_img_path)
 
     for img, img_name in zip(fused_list, path_list):
-        misc.imsave(os.path.join(solver.results_dir, img_name + '.bmp'), img)
+        imageio.imwrite(os.path.join(solver.results_dir, img_name + '.bmp'), img)
 
     test_bar.close()
 

@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc,clear,close all;
-input_path = '/media/server-248/SSD/IEEE/RCGAN/Demo_dataset/train/ori_img';
+input_path = '../../Demo_dataset/train/ori_img';
 IR_path = fullfile(input_path, 'ir');
 VI_path = fullfile(input_path, 'vi');
 PF_path = fullfile(input_path, 'pf');
